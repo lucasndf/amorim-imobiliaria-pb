@@ -709,6 +709,28 @@
 
     @media (max-width: 900px) {
 
+      body {
+        background: radial-gradient(circle at top, #4D1643 0, #3A0D32 45%, #250821 100%);
+      }
+
+      .container {
+        padding: 0 14px;
+      }
+
+      .nav {
+        padding: 10px 0;
+      }
+
+      /* some o pill no mobile pra header ficar menor */
+      .nav-cta .pill {
+        display: none;
+      }
+
+      .btn-primary {
+        padding: 7px 14px;
+        font-size: 12px;
+      }
+
       .nav-links {
         display: none;
       }
@@ -721,25 +743,52 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: 64px;
-        padding: 20px 16px 26px;
+        top: 60px;
+        padding: 16px 16px 24px;
         border-bottom: 1px solid rgba(255,255,255,0.12);
+        gap: 10px;
+        font-size: 13px;
       }
 
       .nav-toggle {
         display: flex;
       }
 
+      .hero {
+        padding: 22px 0 20px;
+      }
+
       .hero-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      /* card vem DEPOIS do texto */
+      .hero-card {
+        order: 1;
+        margin-top: 4px;
+      }
+
+      .hero-title {
+        font-size: 26px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
       }
 
       .hero-card {
-        order: -1;
+        padding: 10px;
       }
 
       .sobre-grid {
         grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .sobre-card,
+      .bairros-card {
+        padding: 16px;
       }
 
       .imoveis-grid {
