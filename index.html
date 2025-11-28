@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amorim · Imóveis em João Pessoa & Cabedelo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Paleta roxo Amorim + dourado */
+      --bg: #3A0D32;
+      --bg-alt: #310B2A;
+      --card: #4A123F;
+      --card-soft: #551649;
+      --border: #5E1B54;
+      --text: #F7F2F9;
+      --muted: #C9AECB;
+      --accent: #D4A857;
+      --accent-soft: rgba(212,168,87,0.12);
+      --accent-strong: #F0C66A;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.65);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --radius-pill: 999px;
+      --container: 1120px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #4D1643 0, #3A0D32 40%, #250821 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    main {
+      padding-bottom: 64px;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(25,5,28,0.95), rgba(25,5,28,0.75), transparent);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 20% 0, #fef3c7, #facc6b 28%, #d4a857 50%, #7c5b22 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #1C1C1C;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.55);
+    }
+
+    .brand-text-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      position: relative;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 6px 12px;
+      background: rgba(14,3,18,0.85);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34,197,94,0.30);
+    }
+
+    .btn-primary,
+    .btn-outline {
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      padding: 9px 18px;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #1F2933;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.75);
+      filter: brightness(1.04);
+    }
+
+    .btn-outline {
+      background: rgba(14,3,18,0.9);
+      color: var(--text);
+      border: 1px solid rgba(201,174,203,0.6);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(12,2,16,0.9);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(14,3,18,0.85);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      width: 15px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      border-radius: 999px;
+      content: "";
+      position: relative;
+    }
+
+    .nav-toggle span::before {
+      position: absolute;
+      top: -5px;
+    }
+
+    .nav-toggle span::after {
+      position: absolute;
+      top: 5px;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      padding: 34px 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.08;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(to right, var(--accent-strong), #fefce8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(240,198,106,0.18), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(88,28,135,0.46), transparent 65%),
+                  rgba(28,3,32,0.96);
+      border-radius: var(--radius-xl);
+      padding: 12px;
+      border: 1px solid rgba(244,236,255,0.12);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-main {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(24,2,27,0.9);
+      margin-bottom: 8px;
+    }
+
+    .hero-image-row {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 8px;
+    }
+
+    .hero-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      border-radius: 999px;
+      background: rgba(18,4,24,0.9);
+      padding: 6px 11px;
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(233,213,255,0.4);
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-strong);
+      box-shadow: 0 0 0 4px rgba(250,204,21,0.5);
+    }
+
+    .hero-floating-card {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(18,4,24,0.96);
+      border-radius: 16px;
+      padding: 10px 12px;
+      font-size: 11px;
+      border: 1px solid rgba(233,213,255,0.35);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-floating-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-floating-text strong {
+      font-size: 11px;
+    }
+
+    .hero-floating-text span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    /* ================= SEÇÕES ================= */
+
+    section {
+      padding: 34px 0 10px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-title-area span {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+    }
+
+    .section-title-area h2 {
+      font-size: 20px;
+      margin-top: 4px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 430px;
+    }
+
+    /* SOBRE + REGIÕES */
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .sobre-card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .sobre-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .sobre-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+    }
+
+    .sobre-header-text h3 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .sobre-header-text span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .sobre-body {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .sobre-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .sobre-tag {
+      font-size: 11px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(24,6,30,0.98);
+      border: 1px solid rgba(222,180,255,0.4);
+    }
+
+    .bairros-card {
+      background: var(--card-soft);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      border: 1px solid var(--border);
+      display: grid;
+      gap: 12px;
+    }
+
+    .bairros-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .bairro-pill {
+      border-radius: var(--radius-pill);
+      padding: 6px 12px;
+      background: rgba(23,6,28,0.9);
+      border: 1px solid rgba(222,180,255,0.45);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .sobre-list {
+      display: grid;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .sobre-list-item {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .sobre-list-bullet {
+      margin-top: 4px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* IMÓVEIS */
+
+    .imoveis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .imovel-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.75);
+    }
+
+    .imovel-thumb {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .imovel-thumb img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.32s ease;
+    }
+
+    .imovel-card:hover .imovel-thumb img {
+      transform: scale(1.05);
+    }
+
+    .imovel-tag {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(18,4,24,0.9);
+      border: 1px solid rgba(233,213,255,0.55);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .imovel-body {
+      padding: 13px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .imovel-local {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .imovel-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .imovel-price {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .imovel-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .imovel-meta span {
+      padding: 4px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(222,180,255,0.35);
+    }
+
+    .imovel-footer {
+      padding: 0 14px 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .imovel-link {
+      font-size: 11px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    /* DIFERENCIAIS */
+
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .dif-card {
+      background: var(--card-soft);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .dif-card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    /* DEPOIMENTOS */
+
+    .depo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .depo-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .depo-name {
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 10px;
+      color: var(--text);
+    }
+
+    .depo-role {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* CONTATO */
+
+    .contato-card {
+      background: linear-gradient(135deg, #4A123F, #22051F);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      border: 1px solid rgba(244,236,255,0.35);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contato-text {
+      max-width: 420px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 22px 0 32px;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid rgba(244,236,255,0.22);
+      margin-top: 40px;
+    }
+
+    footer .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* =============== RESPONSIVO =============== */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background: rgba(14,3,18,0.95);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 64px;
+        padding: 20px 16px 26px;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .sobre-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .imoveis-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .diferenciais-grid,
+      .depo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contato-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1150px) {
+      .imoveis-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .diferenciais-grid,
+      .depo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+  <div class="container">
+    <nav class="nav">
+
+      <!-- LOGO + NOME -->
+      <div class="brand">
+        <div class="brand-logo">A</div>
+        <div class="brand-info">
+          <div class="brand-text-name">Amorim · CRECI 1000 J</div>
+        </div>
+      </div>
+
+      <!-- LINKS DESKTOP -->
+      <div class="nav-links" id="navLinks">
+        <a data-scroll="#hero">Início</a>
+        <a data-scroll="#sobre">Sobre</a>
+        <a data-scroll="#imoveis">Imóveis</a>
+        <a data-scroll="#diferenciais">Como Ajudo</a>
+        <a data-scroll="#depoimentos">Depoimentos</a>
+        <a data-scroll="#contato">Contato</a>
+      </div>
+
+      <!-- CTA / WHATS -->
+      <div class="nav-cta">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Atendimento imediato</span>
+        </div>
+
+        <button class="btn-primary" id="btnNavWhats">
+          Falar com Amorim
+        </button>
+
+        <button class="nav-toggle" id="navToggle">
+          <span></span>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- =============== HERO =============== -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow">João Pessoa & Cabedelo</div>
+        <h1 class="hero-title">
+          Imóveis selecionados nos bairros mais desejados da <span class="hero-highlight">Paraíba</span>.
+        </h1>
+        <p class="hero-subtitle">
+          Amorim conecta você a apartamentos, casas e empreendimentos em João Pessoa e Cabedelo –
+          do compacto bem localizado ao alto padrão com lazer completo.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn-primary" id="btnHeroImoveis">Ver exemplos de imóveis</button>
+          <button class="btn-outline" id="btnHeroWhats">Quero falar pelo WhatsApp</button>
+        </div>
+        <p class="hero-note">
+          Sem formulário, sem complicação: conversa direta com o corretor para entender o que faz sentido hoje.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          Exemplo de empreendimento recente em Ponta de Campina
+        </div>
+
+        <div class="hero-image-main">
+          <img src="noa-1.jpg.jpg" alt="Área de lazer de empreendimento em Ponta de Campina">
+        </div>
+        <div class="hero-image-row">
+          <div>
+            <img src="noa-2.jpg.jpg" alt="Piscina de empreendimento em Cabedelo">
+          </div>
+          <div>
+            <img src="noa-3.jpg.jpg" alt="Ambientes externos de empreendimento em Cabedelo">
+          </div>
+        </div>
+
+        <div class="hero-floating-card">
+          <div class="hero-floating-avatar">
+            <img src="amorim-perfil.jpg.jpg" alt="Corretor Amorim">
+          </div>
+          <div class="hero-floating-text">
+            <strong>Amorim</strong><br>
+            <span>Consultoria em lançamentos, seminovos e oportunidades de investimento</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SOBRE =============== -->
+  <section id="sobre">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-area">
+          <span>Sobre Amorim</span>
+          <h2>Um corretor para acompanhar sua decisão, não só abrir portas.</h2>
+        </div>
+        <p class="section-subtitle">
+          Do primeiro contato até a assinatura, Amorim ajuda você a comparar bairros, empreendimentos
+          e condições, de forma simples e direta.
+        </p>
+      </div>
+
+      <div class="sobre-grid">
+        <div class="sobre-card">
+          <div class="sobre-header">
+            <div class="sobre-avatar">
+              <img src="amorim-perfil.jpg.jpg" alt="Corretor Amorim">
+            </div>
+            <div class="sobre-header-text">
+              <h3>Amorim · CRECI 1000 J</h3>
+              <span>Atuação forte em João Pessoa & Cabedelo</span>
+            </div>
+          </div>
+          <div class="sobre-body">
+            Amorim atua no mercado imobiliário da Paraíba com foco em apartamentos, casas e empreendimentos
+            em regiões estratégicas de João Pessoa e Cabedelo.
+            <br><br>
+            A ideia é entender o seu momento – morar, veranear ou investir – e, a partir disso, filtrar
+            oportunidades que combinem com o seu perfil, seja em um imóvel compacto funcional ou em um
+            projeto com lazer completo.
+            <div class="sobre-tags">
+              <span class="sobre-tag">Apartamentos</span>
+              <span class="sobre-tag">Lançamentos</span>
+              <span class="sobre-tag">Seminovos</span>
+              <span class="sobre-tag">Investimento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bairros-card">
+          <strong style="font-size:13px;">Regiões onde o Amorim mais trabalha hoje:</strong>
+          <p style="font-size:13px;color:var(--muted);">
+            Bairros com boa infraestrutura, acesso à praia, serviços e potencial de valorização.
+          </p>
+          <div class="bairros-pills">
+            <span class="bairro-pill">Bessa</span>
+            <span class="bairro-pill">Cabedelo</span>
+            <span class="bairro-pill">Ponta de Campina</span>
+            <span class="bairro-pill">Altiplano</span>
+            <span class="bairro-pill">Bairro dos Estados</span>
+            <span class="bairro-pill">Tambaú</span>
+          </div>
+
+          <div class="sobre-list" style="margin-top:10px;">
+            <div class="sobre-list-item">
+              <div class="sobre-list-bullet"></div>
+              <div>Leitura de perfil de cada região: público, dia a dia e valorização.</div>
+            </div>
+            <div class="sobre-list-item">
+              <div class="sobre-list-bullet"></div>
+              <div>Indicações pensadas para uso próprio, veraneio ou renda com locação.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== IMÓVEIS / PORTFÓLIO =============== -->
+  <section id="imoveis">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-area">
+          <span>Portfólio de imóveis</span>
+          <h2>Exemplos do tipo de produto que o Amorim trabalha.</h2>
+        </div>
+        <p class="section-subtitle">
+          A carteira de imóveis é dinâmica: entram e saem oportunidades toda semana.
+          Abaixo, um exemplo recente e espaços reservados para novos imóveis que serão cadastrados.
+        </p>
+      </div>
+
+      <div class="imoveis-grid">
+        <!-- Card 1 – exemplo de empreendimento -->
+        <article class="imovel-card">
+          <div class="imovel-thumb">
+            <img src="noa-1.jpg.jpg" alt="Empreendimento em Ponta de Campina">
+            <div class="imovel-tag">Exemplo · Ponta de Campina · Cabedelo</div>
+          </div>
+          <div class="imovel-body">
+            <div class="imovel-local">Lançamento com lazer completo</div>
+            <h3 class="imovel-title">Empreendimento com várias opções de plantas</h3>
+            <div class="imovel-price">
+              Unidades de 1, 2 e 3 quartos · valores sob consulta
+            </div>
+            <div class="imovel-meta">
+              <span>Área de lazer ampla</span>
+              <span>Uso próprio ou locação</span>
+              <span>Próximo à praia</span>
+            </div>
+            <p style="font-size:12px;color:var(--muted);margin-top:6px;">
+              Exemplo de empreendimento que une lazer completo, boa localização e possibilidade de rentabilizar.
+              Em uma conversa, Amorim pode mostrar os detalhes desse e de outros projetos parecidos.
+            </p>
+          </div>
+          <div class="imovel-footer">
+            <div class="imovel-link" data-whats-imovel="empreendimentos com lazer completo em Cabedelo">
+              Quero ver mais empreendimentos como esse
+            </div>
+            <button class="btn-outline" style="font-size:11px;padding:6px 10px;"
+                    data-whats-imovel="empreendimentos com lazer completo em João Pessoa e Cabedelo">
+              Falar com Amorim
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 2 – Em breve (simples) -->
+        <article class="imovel-card">
+          <div class="imovel-thumb">
+            <div class="imovel-tag">Em breve</div>
+          </div>
+          <div class="imovel-body">
+            <div class="imovel-local">Carteira em atualização</div>
+            <h3 class="imovel-title">Novos imóveis sendo cadastrados</h3>
+            <p style="font-size:12px;color:var(--muted);margin-top:4px;">
+              Este espaço será atualizado com imóveis disponíveis em João Pessoa & Cabedelo.
+            </p>
+          </div>
+          <div class="imovel-footer">
+            <button class="btn-outline" style="font-size:11px;padding:6px 10px;"
+                    data-whats-imovel="lista atualizada de imóveis disponíveis">
+              Quero receber as próximas oportunidades
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 3 – Em breve (simples) -->
+        <article class="imovel-card">
+          <div class="imovel-thumb">
+            <div class="imovel-tag">Em breve</div>
+          </div>
+          <div class="imovel-body">
+            <div class="imovel-local">Do compacto ao alto padrão</div>
+            <h3 class="imovel-title">Espaço reservado para próximos destaques</h3>
+            <p style="font-size:12px;color:var(--muted);margin-top:4px;">
+              Assim que novos imóveis forem cadastrados, eles aparecem aqui.
+            </p>
+          </div>
+          <div class="imovel-footer">
+            <button class="btn-outline" style="font-size:11px;padding:6px 10px;"
+                    data-whats-imovel="imóveis dentro do meu orçamento">
+              Ver opções pelo WhatsApp
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== DIFERENCIAIS =============== -->
+  <section id="diferenciais">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-area">
+          <span>Como o Amorim ajuda</span>
+          <h2>Do “quero começar a olhar” até o “é esse aqui”.</h2>
+        </div>
+        <p class="section-subtitle">
+          O foco é tornar a escolha menos confusa: filtrar, comparar e explicar cada passo, seja para
+          primeiro imóvel, troca ou investimento.
+        </p>
+      </div>
+
+      <div class="diferenciais-grid">
+        <div class="dif-card">
+          <h3>Entendimento do seu momento</h3>
+          Conversa inicial para entender se você busca morar, veranear ou investir – e em qual faixa de valor.
+          A partir daí, o filtro fica bem mais assertivo.
+        </div>
+        <div class="dif-card">
+          <h3>Curadoria de imóveis</h3>
+          Seleção de empreendimentos e unidades em bairros estratégicos, mostrando prós e contras de cada opção
+          de forma transparente.
+        </div>
+        <div class="dif-card">
+          <h3>Acompanhamento próximo</h3>
+          Amorim caminha junto no processo: visitas, análise de condições, negociação e orientações até a conclusão da compra.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== DEPOIMENTOS =============== -->
+  <section id="depoimentos">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-area">
+          <span>Experiência dos clientes</span>
+          <h2>Como é decidir com alguém do seu lado.</h2>
+        </div>
+        <p class="section-subtitle">
+          Depoimentos fictícios apenas para o protótipo – depois você pode trocar por frases
+          reais de quem já comprou com o Amorim.
+        </p>
+      </div>
+
+      <div class="depo-grid">
+        <article class="depo-card">
+          “Eu não sabia por onde começar. O Amorim foi afunilando as opções e explicando cada bairro,
+          até chegar em um apartamento que fazia sentido para mim.”
+          <div class="depo-name">Fernanda R.</div>
+          <div class="depo-role">Primeiro imóvel · João Pessoa</div>
+        </article>
+        <article class="depo-card">
+          “Queríamos algo para veraneio, mas que também pudesse gerar renda. Com as simulações que o Amorim mostrou,
+          conseguimos decidir com calma.”
+          <div class="depo-name">Ana & Lucas</div>
+          <div class="depo-role">Casal · Cabedelo</div>
+        </article>
+        <article class="depo-card">
+          “Já tinha visto anúncios, mas faltava alguém para organizar tudo. O Amorim montou um comparativo e
+          ficou muito claro qual era a melhor escolha.”
+          <div class="depo-name">Marcos A.</div>
+          <div class="depo-role">Investidor · João Pessoa</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== CONTATO =============== -->
+  <section id="contato">
+    <div class="container">
+      <div class="contato-card">
+        <div class="contato-text">
+          <h2 style="font-size:18px;margin-bottom:8px;">Quer começar a olhar imóveis com alguém de confiança?</h2>
+          <p>
+            Se você está pensando em comprar em João Pessoa ou Cabedelo, o próximo passo pode ser uma conversa rápida
+            com Amorim para alinhar bairro, tipo de imóvel e faixa de valor.
+          </p>
+          <p style="font-size:12px;margin-top:6px;color:var(--muted);">
+            Atendimento direto pelo WhatsApp – sem formulário e sem compromisso.
+          </p>
+        </div>
+        <div>
+          <button class="btn-primary" id="btnContatoWhats">
+            Falar com Amorim no WhatsApp
+          </button>
+          <div style="font-size:11px;color:var(--muted);margin-top:5px;">
+            João Pessoa & Cabedelo · CRECI 1000 J.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>
+      © <span id="year"></span> Amorim · Mercado Imobiliário PB.
+      Todos os direitos reservados.
+    </div>
+    <div>
+      Protótipo desenvolvido por Lucas · João Pessoa – PB.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // CONFIGURAÇÃO DO WHATSAPP
+  const WHATS_NUMBER = "558399921925"; // +55 83 9992-1925
+
+  function openWhats(message) {
+    const base =
+      "Olá, Amorim! Encontrei seu site e gostaria de ver oportunidades de imóveis em João Pessoa e Cabedelo.";
+    const extra = message ? " Meu interesse é em: " + message + "." : "";
+    const finalMessage = encodeURIComponent(base + extra);
+    const url = `https://wa.me/${WHATS_NUMBER}?text=${finalMessage}`;
+    window.open(url, "_blank");
+  }
+
+  // NAV MOBILE
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  if (navToggle) {
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("mobile-open");
+    });
+  }
+
+  // SCROLL SUAVE
+  document.querySelectorAll("[data-scroll]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const target = document.querySelector(el.getAttribute("data-scroll"));
+      if (target) {
+        const top = target.offsetTop - 70;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+      navLinks.classList.remove("mobile-open");
+    });
+  });
+
+  // BOTÕES WHATS GERAIS
+  document.getElementById("btnNavWhats")?.addEventListener("click", () => openWhats());
+  document.getElementById("btnHeroWhats")?.addEventListener("click", () => openWhats());
+  document.getElementById("btnContatoWhats")?.addEventListener("click", () => openWhats());
+
+  // HERO → IR PARA IMÓVEIS
+  document.getElementById("btnHeroImoveis")?.addEventListener("click", () => {
+    const target = document.querySelector("#imoveis");
+    if (target) {
+      const top = target.offsetTop - 70;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  });
+
+  // BOTÕES WHATS POR IMÓVEL
+  document.querySelectorAll("[data-whats-imovel]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const imovel = el.getAttribute("data-whats-imovel");
+      openWhats(imovel);
+    });
+  });
+
+  // ANO NO RODAPÉ
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
